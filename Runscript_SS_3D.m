@@ -60,9 +60,11 @@ dir_v = [Y_v(:,1), Y_v(:,2), Y_v(:,3)];
 
 % Calculate the inner product
 
-for i = 1:length(Y)
-    
-    theta(i) = acos(dot(dir_e(i,:),dir_v(i,:))/(norm(dir_e(i,:))*norm(dir_e(i,:))));
+for i = 1:length(Y(:,1))
+    dotprod = dot(dir_e(i,:),dir_v(i,:));
+    norm1 = norm(dir_e(i,:));
+    norm2 = norm(dir_v(i,:));
+    theta(i) = acos(dotprod/(norm1*norm2));
 end
 
 h = animatedline;
