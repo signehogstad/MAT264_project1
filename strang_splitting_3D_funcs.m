@@ -39,7 +39,7 @@ for i = 1:n
     % Updating p values
     for j = 1:length(x_intermediate)
         k = length(x_intermediate) + j;
-        Y(i+1,k) = Y(i,k) + (t(i+1)-t(i))*funcs{k}(x_intermediate(1),x_intermediate(2),x_intermediate(3),Y(i,4),Y(i,5),Y(i,6),t(i));
+        Y(i+1,k) = Y(i,k) + (t(i+1)-t(i))*funcs{k}(x_intermediate(1),x_intermediate(2),x_intermediate(3));
     end
 
 
