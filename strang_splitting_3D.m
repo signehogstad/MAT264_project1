@@ -28,19 +28,24 @@ for i = 1:n
     t(i+1) = t(i) + h;
     
     % First half of x values (intermediate step)
-    x1_intermediate = Y(i,1) + ((t(i+1)-t(i))/2)*funcs{1}(Y(i,1),Y(i,2),Y(i,3),Y(i,4),Y(i,5),Y(i,6),t(i));
-    x2_intermediate = Y(i,2) + ((t(i+1)-t(i))/2)*funcs{2}(Y(i,1),Y(i,2),Y(i,3),Y(i,4),Y(i,5),Y(i,6),t(i));
-    x3_intermediate = Y(i,3) + ((t(i+1)-t(i))/2)*funcs{3}(Y(i,1),Y(i,2),Y(i,3),Y(i,4),Y(i,6),Y(i,6),t(i));
+    
+    % Initialize vector of intermediate x values
+    x_intermediate = zeros(1,length(init_vals)/2);
+    for j = 1:length(x_intermediate)
+        x_intermediate(j) = Y(i,j) + ((t(i+1)-t(i))/2)*funcs{j}(Y(i,1),Y(i,2),Y(i,3),Y(i,4),Y(i,5),Y(i,6),t(i));
+    end
     
     % Updating p values
-    Y(i+1,4) = Y(i,4) + (t(i+1)-t(i))*funcs{4}(x1_intermediate,x2_intermediate,x3_intermediate,Y(i,4),Y(i,5),Y(i,6),t(i));
-    Y(i+1,5) = Y(i,5) + (t(i+1)-t(i))*funcs{5}(x1_intermediate,x2_intermediate,x3_intermediate,Y(i,4),Y(i,5),Y(i,6),t(i));
-    Y(i+1,6) = Y(i,6) + (t(i+1)-t(i))*funcs{6}(x1_intermediate,x2_intermediate,x3_intermediate,Y(i,4),Y(i,5),Y(i,6),t(i));
-    
+    for j = 1:length(x_intermediate)
+        k = length(x_intermediate) + j;
+        Y(i+1,k) = Y(i,k) + (t(i+1)-t(i))*funcs{k}(x_intermediate(1),x_intermediate(2),x_intermediate(3),Y(i,4),Y(i,5),Y(i,6),t(i));
+    end
+
+
     % Second half of x values
-    Y(i+1,1) = x1_intermediate + ((t(i+1)-t(i))/2)*funcs{1}(Y(i,1),Y(i,2),Y(i,3),Y(i+1,4),Y(i+1,5),Y(i+1,6),t(i));
-    Y(i+1,2) = x2_intermediate + ((t(i+1)-t(i))/2)*funcs{2}(Y(i,1),Y(i,2),Y(i,3),Y(i+1,4),Y(i+1,5),Y(i+1,6),t(i));
-    Y(i+1,3) = x3_intermediate + ((t(i+1)-t(i))/2)*funcs{3}(Y(i,1),Y(i,2),Y(i,3),Y(i+1,4),Y(i+1,5),Y(i+1,6),t(i));
+    for j = 1:length(x_intermediate)
+        Y(i+1,j) = x_intermediate(j) + ((t(i+1)-t(i))/2)*funcs{j}(Y(i,1),Y(i,2),Y(i,3),Y(i+1,4),Y(i+1,5),Y(i+1,6),t(i));
+    end
     
 end
     
