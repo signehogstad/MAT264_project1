@@ -14,20 +14,21 @@ r = 1.621286506*10^11;
 % RHSs for displacement and momentum
 
 % Earth
-fx1 = @(x1,x2,x3,p1,p2,p3,t) p1*(1/m_e);
-fx2 = @(x1,x2,x3,p1,p2,p3,t) p2*(1/m_e);
-fx3 = @(x1,x2,x3,p1,p2,p3,t) p3*(1/m_e);
+fx1 = @(x1,x2,x3,p1,p2,p3,t) p1/m_e;
+fx2 = @(x1,x2,x3,p1,p2,p3,t) p2/m_e;
+fx3 = @(x1,x2,x3,p1,p2,p3,t) p3/m_e;
 fp1 = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x1));
 fp2 = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x2));
 fp3 = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x3));
 
 % Venus
-fx1_v = @(x1,x2,x3,p1,p2,p3,t) p1*(1/m_v);
-fx2_v = @(x1,x2,x3,p1,p2,p3,t) p2*(1/m_v);
-fx3_v = @(x1,x2,x3,p1,p2,p3,t) p3*(1/m_v);
+fx1_v = @(x1,x2,x3,p1,p2,p3,t) p1/m_v;
+fx2_v = @(x1,x2,x3,p1,p2,p3,t) p2/m_v;
+fx3_v = @(x1,x2,x3,p1,p2,p3,t) p3/m_v;
 fp1_v = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x1));
 fp2_v = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x2));
 fp3_v = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x3));
+
 
 
 funcs = {fx1, fx2, fx3, fp1, fp2, fp3};
