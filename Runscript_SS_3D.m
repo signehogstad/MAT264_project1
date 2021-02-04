@@ -87,12 +87,4 @@ for k = 1:length(Y(:,1))
     set(d_v,'Color','b','Marker','.','MarkerSize',25,'MaximumNumPoints',1);
     addpoints(d_v,Y_v(k,1),Y_v(k,2),Y_v(k,3));
     drawnow
-    %hold on
-    %plot(Y(k,1),Y(k,2),'or','MarkerSize',2,'MarkerFaceColor','r')
-    %plot(Y_v(k,1),Y_v(k,2),'or','MarkerSize',2,'MarkerFaceColor','b')
 end
-
-
-%axis square
-%hold on
-%plot(Y(k,1),Y(k,2),'or','MarkerSize',2,'MarkerFaceColor','r')
