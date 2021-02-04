@@ -14,21 +14,20 @@ r = 1.621286506*10^11;
 % RHSs for displacement and momentum
 
 % Earth
-fx1 = @(x1,x2,x3,p1,p2,p3,t) p1/m_e;
-fx2 = @(x1,x2,x3,p1,p2,p3,t) p2/m_e;
-fx3 = @(x1,x2,x3,p1,p2,p3,t) p3/m_e;
-fp1 = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x1));
-fp2 = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x2));
-fp3 = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x3));
+fx1 = @(p1) p1*(1/m_e);
+fx2 = @(p2) p2*(1/m_e);
+fx3 = @(p3) p3*(1/m_e);
+fp1 = @(x1,x2,x3) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x1));
+fp2 = @(x1,x2,x3) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x2));
+fp3 = @(x1,x2,x3) ((-G*m_e*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x3));
 
 % Venus
-fx1_v = @(x1,x2,x3,p1,p2,p3,t) p1/m_v;
-fx2_v = @(x1,x2,x3,p1,p2,p3,t) p2/m_v;
-fx3_v = @(x1,x2,x3,p1,p2,p3,t) p3/m_v;
-fp1_v = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x1));
-fp2_v = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x2));
-fp3_v = @(x1,x2,x3,p1,p2,p3,t) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x3));
-
+fx1_v = @(p1) p1*(1/m_v);
+fx2_v = @(p2) p2*(1/m_v);
+fx3_v = @(p3) p3*(1/m_v);
+fp1_v = @(x1,x2,x3) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x1));
+fp2_v = @(x1,x2,x3) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x2));
+fp3_v = @(x1,x2,x3) ((-G*m_v*m_s)*(x1^2+x2^2+x3^2)^(-3/2)*(x3));
 
 
 funcs = {fx1, fx2, fx3, fp1, fp2, fp3};
@@ -49,9 +48,9 @@ t_end = 2000000000;
 
 % Try to solve
 
-[Y,t] = strang_splitting_3D(funcs, init_vals, h, t_start, t_end);
+[Y,t] = strang_splitting_3D_funcs(funcs, init_vals, h, t_start, t_end);
 
-[Y_v,t_v] = strang_splitting_3D(funcs_v, init_vals_v, h, t_start, t_end);
+[Y_v,t_v] = strang_splitting_3D_funcs(funcs_v, init_vals_v, h, t_start, t_end);
 
 % Make vectors from the sun to the earth and the sun to venus
 
@@ -88,4 +87,7 @@ for k = 1:length(Y(:,1))
     set(d_v,'Color','b','Marker','.','MarkerSize',25,'MaximumNumPoints',1);
     addpoints(d_v,Y_v(k,1),Y_v(k,2),Y_v(k,3));
     drawnow
+    %hold on
+    %plot(Y(k,1),Y(k,2),'or','MarkerSize',2,'MarkerFaceColor','r')
+    %plot(Y_v(k,1),Y_v(k,2),'or','MarkerSize',2,'MarkerFaceColor','b')
 end
