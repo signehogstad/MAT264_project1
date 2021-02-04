@@ -69,6 +69,8 @@ end
 
 h = animatedline;
 h_v = animatedline;
+d = animatedline;
+d_v = animatedline;
 axis([-0.25*10^12,0.25*10^12,-0.25*10^12,0.25*10^12,-0.25*10^12,0.25*10^12])
 axis square
 
@@ -80,8 +82,10 @@ text(0,0,'sun')
 for k = 1:length(Y(:,1))
     addpoints(h,Y(k,1),Y(k,2),Y(k,3));
     addpoints(h_v,Y_v(k,1),Y_v(k,2),Y_v(k,3));
-    set(h,Y(k,1),Y(k,2),Y(k,3),'red',25);
-    set(h_v,Y_v(k,1),Y_v(k,2),Y_v(k,3),'blue',25);
+    set(d,'Color','r','Marker','.','MarkerSize',25,'MaximumNumPoints',1);
+    addpoints(d,Y(k,1),Y(k,2),Y(k,3));
+    set(d_v,'Color','b','Marker','.','MarkerSize',25,'MaximumNumPoints',1);
+    addpoints(d_v,Y_v(k,1),Y_v(k,2),Y_v(k,3));
     drawnow
     %hold on
     %plot(Y(k,1),Y(k,2),'or','MarkerSize',2,'MarkerFaceColor','r')
