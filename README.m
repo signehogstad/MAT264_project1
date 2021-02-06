@@ -1,6 +1,6 @@
-# MAT264_project1
+% MAT264_project1
 
-Gjeldende kode: \n
+Gjeldende kode:
   Kjørescript: Runscript_combined_nbody.m
   Posisjon-oppdatering: position.m
   Momentum-oppdatering: momentum.m
