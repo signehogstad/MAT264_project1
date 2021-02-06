@@ -2,6 +2,10 @@ hold off
 clear
 clc
 
+% List of bodies being considered (except the sun)
+% 1) Earth
+% 2) Venus
+
 
 % Constants
 m_s = 1.98850*10^30;
@@ -26,22 +30,14 @@ z_v = @(pz_v) position(pz_v,m_v);
 
 
 % Momentum vectors
-%px_e = @(x_e,y_e,z_e,x_v,y_v,z_v) ((-G*m_e*m_s)*(x_e^2+y_e^2+z_e^2)^(-3/2)*(x_e));
-%py_e = @(x_e,y_e,z_e,x_v,y_v,z_v) ((-G*m_e*m_s)*(x_e^2+y_e^2+z_e^2)^(-3/2)*(y_e));
-%pz_e = @(x_e,y_e,z_e,x_v,y_v,z_v) ((-G*m_e*m_s)*(x_e^2+y_e^2+z_e^2)^(-3/2)*(z_e));
 
-px_e = @(x_e,y_e,z_e,x_v,y_v,z_v) -G*m_e*(m_s*x_e*(x_e^2+y_e^2+z_e^2)^(-3/2) + m_v*(x_e-x_v)*((x_e-x_v)^2+(y_e-y_v)^2+(z_e-z_v)^2)^(-3/2));
-py_e = @(x_e,y_e,z_e,x_v,y_v,z_v) -G*m_e*(m_s*y_e*(x_e^2+y_e^2+z_e^2)^(-3/2) + m_v*(y_e-y_v)*((x_e-x_v)^2+(y_e-y_v)^2+(z_e-z_v)^2)^(-3/2));
-pz_e = @(x_e,y_e,z_e,x_v,y_v,z_v) -G*m_e*(m_s*z_e*(x_e^2+y_e^2+z_e^2)^(-3/2) + m_v*(z_e-z_v)*((x_e-x_v)^2+(y_e-y_v)^2+(z_e-z_v)^2)^(-3/2));
+px_e = @(x_e,y_e,z_e,x_v,y_v,z_v) momentum('Earth',[x_e y_e z_e x_v y_v z_v],m,1);
+py_e = @(x_e,y_e,z_e,x_v,y_v,z_v) momentum('Earth',[x_e y_e z_e x_v y_v z_v],m,2);
+pz_e = @(x_e,y_e,z_e,x_v,y_v,z_v) momentum('Earth',[x_e y_e z_e x_v y_v z_v],m,3);
 
-px_v = @(x_e,y_e,z_e,x_v,y_v,z_v) -G*m_v*(m_s*x_v*(x_v^2+y_v^2+z_v^2)^(-3/2) + m_e*(x_v-x_e)*((x_e-x_v)^2+(y_e-y_v)^2+(z_e-z_v)^2)^(-3/2));
-py_v = @(x_e,y_e,z_e,x_v,y_v,z_v) -G*m_v*(m_s*y_v*(x_v^2+y_v^2+z_v^2)^(-3/2) + m_e*(y_v-y_e)*((x_e-x_v)^2+(y_e-y_v)^2+(z_e-z_v)^2)^(-3/2));
-pz_v = @(x_e,y_e,z_e,x_v,y_v,z_v) -G*m_v*(m_s*z_v*(x_v^2+y_v^2+z_v^2)^(-3/2) + m_e*(z_v-z_e)*((x_e-x_v)^2+(y_e-y_v)^2+(z_e-z_v)^2)^(-3/2));
-
-%px_v = @(x_e,y_e,z_e,x_v,y_v,z_v) ((-G*m_v*m_s)*(x_v^2+y_v^2+z_v^2)^(-3/2)*(x_v));
-%py_v = @(x_e,y_e,z_e,x_v,y_v,z_v) ((-G*m_v*m_s)*(x_v^2+y_v^2+z_v^2)^(-3/2)*(y_v));
-%pz_v = @(x_e,y_e,z_e,x_v,y_v,z_v) ((-G*m_v*m_s)*(x_v^2+y_v^2+z_v^2)^(-3/2)*(z_v));
-
+px_v = @(x_e,y_e,z_e,x_v,y_v,z_v) momentum('Venus',[x_e y_e z_e x_v y_v z_v],m,1);
+py_v = @(x_e,y_e,z_e,x_v,y_v,z_v) momentum('Venus',[x_e y_e z_e x_v y_v z_v],m,2);
+pz_v = @(x_e,y_e,z_e,x_v,y_v,z_v) momentum('Venus',[x_e y_e z_e x_v y_v z_v],m,3);
 
 funcs = {x_e, y_e, z_e, x_v, y_v, z_v, px_e, py_e, pz_e, px_v, py_v, pz_v};
 
