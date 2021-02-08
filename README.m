@@ -5,8 +5,6 @@ Gjeldende kode:
   Posisjon-oppdatering: position.m
   Momentum-oppdatering: momentum.m
   Numerisk løser: strang_splitting_combined.m
-  
-Gjenstår å legge til i kjørescript:
   Energiberegning: hamiltonian_energy.m
   
 Alternativ kode til sammenlikning med eksplisitt Euler:
