@@ -13,6 +13,8 @@ elseif planet_name == 'Venus'
     index = 2;
 elseif planet_name == 'Mrcry'
     index = 3;
+elseif planet_name == 'Marss'
+    index = 4;
 else
     disp('Not a valid body')
 end
@@ -67,4 +69,3 @@ end
 P = P_int;
 
 p = P(dir);
-       
