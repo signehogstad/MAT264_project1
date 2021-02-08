@@ -4,7 +4,7 @@ Gjeldende kode:
   Kjørescript: Runscript_nbody_SS.m
   Posisjon-oppdatering: position.m
   Momentum-oppdatering: momentum.m
-  Numerisk løser: strang_splitting_combined_nbody.m
+  Numerisk løser: strang_splitting_combined.m
   
 Gjenstår å legge til i kjørescript:
   Energiberegning: hamiltonian_energy.m
