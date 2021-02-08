@@ -1,7 +1,7 @@
 % MAT264_project1
 
 Gjeldende kode:
-  Kjørescript: Runscript_combined_nbody.m
+  Kjørescript: Runscript_nbody_SS.m
   Posisjon-oppdatering: position.m
   Momentum-oppdatering: momentum.m
   Numerisk løser: strang_splitting_combined_nbody.m
