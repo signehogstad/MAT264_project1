@@ -8,5 +8,5 @@ Gjeldende kode:
   Energiberegning: hamiltonian_energy.m
   
 Alternativ kode til sammenlikning med eksplisitt Euler:
-  Kjørescript: Runscript_nbody_euler.m
+  Kjørescript: Runscript_nbody_E.m
   Numerisk løser: euler_forward.m
