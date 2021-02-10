@@ -139,9 +139,11 @@ h = 10000;
 t_start = 0;
 
 t_end = 400000000;
-%t_end = 3721852800; % 2117 Venus transit
-%t_end = 392169600; % 2012 Venus transit
-%t_end = 139968000; % 2004 Venus transit
+%t_end = 139998000; % 2004 Venus transit
+%t_end = 392261340; % 2012 Venus transit
+%t_end = 3721949280; % 2117 Venus transit
+%t_end = 9974198460; % 2125 Venus transit
+
 %t_end = 31558118; %Earth orbital time
 %t_end = 19414166; %Venus orbital time
 %t_end = 7600530; % Mercury orbital time
