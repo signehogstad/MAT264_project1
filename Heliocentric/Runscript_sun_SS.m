@@ -222,7 +222,7 @@ h1 = animatedline; % earth line
  t2 = animatedline; % neptun dot
  mo2 = animatedline; % moon dot
  
- axis([-0.2*10^12,0.2*10^12,-0.2*10^12,0.2*10^12,-0.2*10^12,0.2*10^12])
+ axis([-0.2*10^13,0.2*10^13,-0.2*10^13,0.2*10^13,-0.2*10^13,0.2*10^13])
  axis square
  
  hold on
