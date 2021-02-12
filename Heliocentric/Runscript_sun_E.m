@@ -158,11 +158,13 @@ t_end = 139998000; % 2004 Venus transit
 [Y,t] = euler_forward_sun(funcs, init_vals, h, t_start, t_end);
 
 
-% Make vectors from the sun to the earth and the sun to venus
+% Make direction vectors
 
-dir_e = [Y(:,1), Y(:,2), Y(:,3)];
+%dir_e = [Y(:,1), Y(:,2), Y(:,3)]; % Vector from Sun to Earth
+dir_e = [0 - Y(:,1), 0 - Y(:,2), 0 - Y(:,3)]; % Vector from Earth to Sun
 
-dir_v = [Y(:,4), Y(:,5), Y(:,6)];
+%dir_v = [Y(:,4), Y(:,5), Y(:,6)]; Vector from Sun to Venus
+dir_v = [Y(:,4) - Y(:,1), Y(:,5) - Y(:,2), Y(:,6) - Y(:,3)]; % Vector from Earth to Venus
 
 % Calculate the inner product
 
